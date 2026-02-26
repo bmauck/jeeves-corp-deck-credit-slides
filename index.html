@@ -251,9 +251,10 @@ h2{font-family:'Playfair Display',serif;font-size:clamp(34px,4.2vw,64px);font-we
     <p style="font-size:11px;color:var(--d);margin-top:8px">3-month trailing average of charge-offs as % of BOP balance.</p>
   </div>
 </div></div>
-<div class="f d3"><div class="gr g2" style="max-width:520px;margin-top:28px">
+<div class="f d3"><div class="gr g3" style="max-width:780px;margin-top:28px">
   <div class="cd"><div class="l">DQ Jan '26 Rolling</div><div class="n">0.22%</div><div class="s">Below 1% target every month</div></div>
   <div class="cd"><div class="l">C/O Jan '26 Rolling</div><div class="n">0.35%</div><div class="s">Trending down from Q2 '25 peak</div></div>
+  <div class="cd"><div class="l">AIG Coverage</div><div class="n">$25M</div><div class="s">90% coverage activated Jan '25</div></div>
 </div></div>
 </section>
 
@@ -366,9 +367,9 @@ secs.forEach(s=>obs.observe(s));
     multiLine('dqCountryRollChart',p25,[lineNamed(cdqMXRoll.slice(12),'#c9a84c','Mexico'),lineNamed(cdqCORoll.slice(12),'#2ec4b6','Colombia'),lineNamed(cdqBRRoll.slice(12),'#a78bfa','Brazil')],xSm,1,ySdqC);
     dualLine('coGlobalRollChart',periods,gcoRaw,gcoRoll,xSm,null,ySco);
     multiLine('coCountryRollChart',p25,[lineNamed(ccoMXRoll.slice(12),'#c9a84c','Mexico'),lineNamed(ccoCORoll.slice(12),'#2ec4b6','Colombia'),lineNamed(ccoBRRoll.slice(12),'#a78bfa','Brazil')],xSm,null,ySco);
-    // Summary slide — global rolling only
-    dualLine('dqGlobalRollSumChart',periods,gdqRaw,gdqRoll,xSm,1);
-    dualLine('coGlobalRollSumChart',periods,gcoRaw,gcoRoll,xSm,null,ySco);
+    // Summary slide — bar charts
+    bar('dqGlobalRollSumChart',periods,[barDS(gdqRoll.map(v=>v??0),dqColor)],xSm,1);
+    bar('coGlobalRollSumChart',periods,[barDS(gcoRoll.map(v=>v??0),coColor)],xSm,null,ySco);
   }
 })();
 

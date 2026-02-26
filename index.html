@@ -235,6 +235,28 @@ h2{font-family:'Playfair Display',serif;font-size:clamp(34px,4.2vw,64px);font-we
 </div></div>
 </section>
 
+<!-- S25: GLOBAL SUMMARY — 3MO ROLLING -->
+<section id="s25">
+<div class="f"><div class="tg">Credit Performance — Summary (3Mo Rolling Avg)</div></div>
+<div class="f d1"><h2>Global DQ & charge-off<br><span class="gl it">both trending in range.</span></h2></div>
+<div class="f d2"><div class="gr g2" style="max-width:1040px;gap:32px;margin-top:36px;align-items:start">
+  <div>
+    <p style="font-size:11px;text-transform:uppercase;letter-spacing:2px;color:var(--g);margin-bottom:12px">Global DQ 30-59 % — 3Mo Rolling Avg</p>
+    <div class="cw" style="padding:20px 20px 8px"><canvas id="dqGlobalRollSumChart" height="160"></canvas></div>
+    <p style="font-size:11px;color:var(--d);margin-top:8px">3-month trailing average. Jan '24 – Jan '26.</p>
+  </div>
+  <div>
+    <p style="font-size:11px;text-transform:uppercase;letter-spacing:2px;color:var(--g);margin-bottom:12px">Global C/O % — 3Mo Rolling Avg</p>
+    <div class="cw" style="padding:20px 20px 8px"><canvas id="coGlobalRollSumChart" height="160"></canvas></div>
+    <p style="font-size:11px;color:var(--d);margin-top:8px">3-month trailing average of charge-offs as % of BOP balance.</p>
+  </div>
+</div></div>
+<div class="f d3"><div class="gr g2" style="max-width:520px;margin-top:28px">
+  <div class="cd"><div class="l">DQ Jan '26 Rolling</div><div class="n">0.22%</div><div class="s">Below 1% target every month</div></div>
+  <div class="cd"><div class="l">C/O Jan '26 Rolling</div><div class="n">0.35%</div><div class="s">Trending down from Q2 '25 peak</div></div>
+</div></div>
+</section>
+
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 
 const secs=document.querySelectorAll('section'),dots=document.getElementById('dots'),cnt=document.getElementById('cnt');
@@ -344,6 +366,9 @@ secs.forEach(s=>obs.observe(s));
     multiLine('dqCountryRollChart',p25,[lineNamed(cdqMXRoll.slice(12),'#c9a84c','Mexico'),lineNamed(cdqCORoll.slice(12),'#2ec4b6','Colombia'),lineNamed(cdqBRRoll.slice(12),'#a78bfa','Brazil')],xSm,1,ySdqC);
     dualLine('coGlobalRollChart',periods,gcoRaw,gcoRoll,xSm,null,ySco);
     multiLine('coCountryRollChart',p25,[lineNamed(ccoMXRoll.slice(12),'#c9a84c','Mexico'),lineNamed(ccoCORoll.slice(12),'#2ec4b6','Colombia'),lineNamed(ccoBRRoll.slice(12),'#a78bfa','Brazil')],xSm,null,ySco);
+    // Summary slide — global rolling only
+    dualLine('dqGlobalRollSumChart',periods,gdqRaw,gdqRoll,xSm,1);
+    dualLine('coGlobalRollSumChart',periods,gcoRaw,gcoRoll,xSm,null,ySco);
   }
 })();
 
